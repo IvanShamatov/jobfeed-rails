@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140225121315) do
+ActiveRecord::Schema.define(version: 20140225140412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,19 @@ ActiveRecord::Schema.define(version: 20140225121315) do
     t.integer  "keyword_id"
     t.integer  "source"
     t.binary   "object"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "feeds_tokens", force: true do |t|
+    t.integer "token_id"
+    t.integer "feed_id"
+  end
+
+  create_table "tokens", force: true do |t|
+    t.string   "token"
+    t.integer  "kind",          limit: 2
+    t.datetime "last_activity"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
